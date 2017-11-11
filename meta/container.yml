@@ -1,0 +1,9 @@
+  nb:
+    from: jupyterhub/singleuser:0.8
+    user: jovyan
+    command: "start-notebook.sh"
+    entrypoint: ["tini", "--"]
+    environment:
+      - PATH=/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin
+    roles:
+      - role: marcusianlevine.jupyter-container

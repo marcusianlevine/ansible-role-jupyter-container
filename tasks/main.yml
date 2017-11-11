@@ -1,0 +1,27 @@
+---
+
+- include_vars: "/src/{{ item }}"
+  with_items: "{{ vars_files }}"
+  when: vars_files is defined and vars_files
+
+- name: install jupyterhub via pip
+  shell: env -i PATH=$PATH bash -c '/opt/conda/bin/pip install --no-cache-dir --upgrade jupyterhub=={{ jupyterhub_pip_version }}'
+
+- name: create conda environment
+  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/conda create --yes -n {{ py2_env }} python=2.7 pip ipykernel'
+    creates="{{ conda_prefix }}/envs/{{ py2_env }}"
+
+- name: install python2 kernlspec
+  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/envs/{{ py2_env }}/bin/python2 -m IPython kernel install'
+
+- name: Install additional Python2 conda packages
+  command: env -i PATH=$PATH bash -c '/opt/conda/bin/conda install -n python2 {{ conda2_packages | join(' ') }}'
+
+- name: Install additional Python2 pip packages
+  command: env -i PATH=$PATH bash -c 'source /opt/conda/bin/activate python2 && pip install {{ pip2_packages | join(' ') }}'
+
+- include: install_r.yml
+
+- name: Clean apt cache
+  command: apt-get clean
+  when: ansible_os_family == 'Debian'

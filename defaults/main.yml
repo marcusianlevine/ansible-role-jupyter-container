@@ -1,0 +1,126 @@
+---
+
+py2_env: "python2"
+
+jupyterhub_pip_version: "0.8.1"
+
+conda2_packages:
+  - numpy
+  - scipy
+  - matplotlib
+  - cython
+  - h5py
+  - scikit-learn
+  - scikit-image
+  - pandas
+  - sympy
+  - pillow
+  - seaborn
+  - patsy
+  - statsmodels
+  - networkx
+  - dask
+  - blaze
+  - odo
+  - altair
+  - pyodbc
+  - sqlalchemy
+  - seaborn
+  - tqdm
+  - ipywidgets
+  - xlrd
+  - xgboost
+  - nltk
+  - python-pptx
+  - python-docx
+  - bokeh
+  - wordcloud
+  - phantomjs
+  - selenium
+  - beautifulsoup4
+  - gensim
+  - spacy
+  - pymysql
+
+pip2_packages:
+  - brewer2mpl
+  - ggplot
+  - ipythonblocks
+  - plotly
+  - cufflinks
+  - apachelog
+  - glob2
+  - fuzzywuzzy
+  - jupyterthemes
+  - pylatex
+  - dash
+  - dash-renderer
+  - dash-html-components
+  - dash-core-components
+  - openpyxl
+  - python-louvain
+  - pymysql
+
+cran_packages:
+  - car
+  - ggplot2
+  - XML
+  - plyr
+  - randomForest
+  - Hmisc
+  - stringr
+  - RColorBrewer
+  - reshape
+  - reshape2
+  - RCurl
+  - devtools
+  - dplyr
+  - httr
+  - knitr
+  - packrat
+  - rmarkdown
+  - rvtest
+  - testit
+  - testthat
+  - tidyr
+  - shiny
+  - base64enc
+  - Cairo
+  - codetools
+  - table
+  - gridExtra
+  - gtable
+  - hexbin
+  - jpeg
+  - Lahman
+  - MASS
+  - PKI
+  - png
+  - microbenchmark
+  - mgcv
+  - mapproj
+  - maps
+  - maptools
+  - mgcv
+  - multcomp
+  - nycflights13
+  - quantreg
+  - javareconf
+  - rJava
+  - roxygen2
+  - RSQLite
+  - lattice
+  - nlme
+  - RCurl 
+  - RHTMLForms
+  - RJSONIO
+  - RSelenium
+  - rgl
+  - caret
+  - data.table
+  - parallel
+  - testthat
+  - rpart
+  - caret
+  - RTextTools
+  - XLSX

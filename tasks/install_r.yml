@@ -1,0 +1,23 @@
+---
+
+- name: install r and devtools's system dependencies
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+    - libcurl4-gnutls-dev
+    - libxml2-dev
+    - libssl-dev
+
+- name: Install conda R channel
+  shell: env -i PATH=$PATH bash -c '/opt/conda/bin/conda config --system --add channels r'
+
+- name: Install base R conda packages
+  shell: env -i PATH=$PATH bash -c '/opt/conda/bin/conda install --quiet --yes {{ item }}'
+  with_items:
+    - rpy2=2.8*
+    - r-base=3.3.2
+    - r-devtools=1.12*
+    - r-irkernel=0.7*
+
+- name: install additional R packages
+  command: /opt/conda/bin/R --quiet -e "if (! '{{item}}' %in% installed.packages()[,'Package']) install.packages('{{item}}', repos='http://cran.rstudio.com/')"
+  with_items: '{{cran_packages}}'
