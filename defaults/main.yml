@@ -41,6 +41,7 @@ conda2_packages:
   - gensim
   - spacy
   - pymysql
+  - fbprophet
 
 pip2_packages:
   - brewer2mpl
