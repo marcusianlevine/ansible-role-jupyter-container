@@ -61,6 +61,7 @@ pip2_packages:
   - openpyxl
   - python-louvain
   - pymysql
+  - vertica-sqlalchemy
 
 cran_packages:
   - car
