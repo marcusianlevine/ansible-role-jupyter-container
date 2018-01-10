@@ -14,13 +14,25 @@
 - name: install python2 kernlspec
   command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/envs/{{ py2_env }}/bin/python2 -m IPython kernel install'
 
-- name: Install additional Python2 conda packages
-  command: env -i PATH=$PATH bash -c '/opt/conda/bin/conda install -n python2 {{ conda2_packages | join(' ') }}'
+- name: Install Python2 conda packages
+  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/conda install -n python2 {{ conda2_packages | join(' ') }}'
 
-- name: Install additional Python2 pip packages
-  command: env -i PATH=$PATH bash -c 'source /opt/conda/bin/activate python2 && pip install {{ pip2_packages | join(' ') }}'
+- name: Install Python2 pip packages
+  command: env -i PATH=$PATH bash -c 'source {{ conda_prefix }}/bin/activate python2 && pip install {{ pip2_packages | join(' ') }}'
+
+- name: Install Python3 conda packages
+  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/conda install {{ conda2_packages + extra_conda3_packages | join(' ') }}'
+
+- name: Install Python3 pip packages
+  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/pip install {{ pip2_packages + extra_pip3_packages | join(' ') }}'
 
 - include: install_r.yml
+
+- name: Fix permissions so entire conda directory belongs to notebook user
+  file:
+    path: "{{ conda_prefix }}"
+    owner: "{{ notebook_user }}"
+    group: users
 
 - name: Clean apt cache
   command: apt-get clean

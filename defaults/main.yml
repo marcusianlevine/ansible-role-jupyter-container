@@ -1,5 +1,7 @@
 ---
 
+notebook_user: jovyan
+
 py2_env: "python2"
 
 jupyterhub_pip_version: "0.8.1"
@@ -62,6 +64,9 @@ pip2_packages:
   - python-louvain
   - pymysql
   - vertica-sqlalchemy
+
+extra_conda3_packages: []
+extra_pip3_packages: []
 
 cran_packages:
   - car
