@@ -21,10 +21,10 @@
   command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/envs/{{ py2_env }}/bin/python2 -m IPython kernel install'
 
 - name: Install Python3 conda packages
-  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/conda install {{ conda2_packages + extra_conda3_packages | join(' ') }}'
+  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/conda install {{ (conda2_packages + extra_conda3_packages) | join(' ') }}'
 
 - name: Install Python3 pip packages
-  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/pip install {{ pip2_packages + extra_pip3_packages | join(' ') }}'
+  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/pip install {{ (pip2_packages + extra_pip3_packages) | join(' ') }}'
 
 - include: install_r.yml
 
