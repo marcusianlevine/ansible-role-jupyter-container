@@ -7,6 +7,11 @@
 - name: install jupyterhub via pip
   shell: env -i PATH=$PATH bash -c '/opt/conda/bin/pip install --no-cache-dir --upgrade jupyterhub=={{ jupyterhub_pip_version }}'
 
+- name: add conda config
+  copy:
+    content: "{{ conda_config | to_yaml }}"
+    dest: "{{ conda_prefix }}/.condarc"
+
 - name: create conda environment
   command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/conda create --yes -n {{ py2_env }} python=2.7 pip ipykernel'
     creates="{{ conda_prefix }}/envs/{{ py2_env }}"

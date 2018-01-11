@@ -6,6 +6,18 @@ py2_env: "python2"
 
 jupyterhub_pip_version: "0.8.1"
 
+base_conda_channels:
+  - r
+  - conda-forge
+  - defaults
+
+extra_conda_channels: []
+
+conda_config:
+  channels: "{{ base_conda_channels + extra_conda_channels }}"
+  auto_update_conda: false
+  show_channel_urls: true
+
 conda2_packages:
   - numpy
   - scipy
