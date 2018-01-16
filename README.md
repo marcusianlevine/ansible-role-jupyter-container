@@ -37,15 +37,15 @@ $ ansible-container install marcusianlevine.jupyter-container
 * `cran_packages`
     * List of R packages to install
 * `conda2_packages`
-    * List of extra conda Python2 paackages to install
+    * List of conda Python2 paackages to install
 * `pip2_packages`
-    * List of extra pip Python2 packages to install
-* `conda3_packages`
-    * List of extra conda Python3 packages to install
-    * Defaults to `conda2_packages`
-* `pip3_packages`
-    * List of extra pip Python3 packages to install
-    * Defaults to `pip2_packages`
+    * List of pip Python2 packages to install
+* `extra_conda3_packages`
+    * List of extra conda Python3 packages to install in addition to `conda2_packages`
+* `extra_pip3_packages`
+    * List of extra pip Python3 packages to install in addition to all listed in `pip2_packages`
+* `extra_lab_extensions`
+    * List of extra Jupyter Lab extensions (npm packages) to install
 
 
 ## Dependencies

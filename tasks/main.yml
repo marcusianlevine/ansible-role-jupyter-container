@@ -31,6 +31,10 @@
 - name: Install Python3 pip packages
   command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/pip install {{ (pip2_packages + extra_pip3_packages) | join(' ') }}'
 
+- name: Install Jupyter Lab extensions
+  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/jupyter labextension install {{ item }}'
+  with_items: "{{ lab_extensions }}"
+
 - include: install_r.yml
 
 - name: Fix permissions so entire conda directory belongs to notebook user

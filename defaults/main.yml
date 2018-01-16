@@ -18,6 +18,11 @@ conda_config:
   auto_update_conda: false
   show_channel_urls: true
 
+base_lab_extensions: 
+  - "@jupyterlab/hub-extension"
+
+lab_extensions: "{{ base_lab_extensions + ( extra_lab_extensions | default([]) ) }}"
+
 conda2_packages:
   - numpy
   - scipy
