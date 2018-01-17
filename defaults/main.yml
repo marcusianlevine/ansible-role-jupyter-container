@@ -23,7 +23,7 @@ base_lab_extensions:
 
 lab_extensions: "{{ base_lab_extensions + ( extra_lab_extensions | default([]) ) }}"
 
-conda2_packages:
+base_conda2_packages:
   - numpy
   - scipy
   - matplotlib
@@ -62,7 +62,10 @@ conda2_packages:
   - pymysql
   - fbprophet
 
-pip2_packages:
+extra_conda2_packages: []
+conda2_packages: "{{ base_conda2_packages + extra_conda2_packages }}"
+
+base_pip2_packages:
   - brewer2mpl
   - ggplot
   - ipythonblocks
@@ -81,6 +84,10 @@ pip2_packages:
   - python-louvain
   - pymysql
   - vertica-sqlalchemy
+  - pyldavis
+
+extra_pip2_packages: []
+pip2_packages: "{{ base_pip2_packages + extra_pip2_packages }}"
 
 extra_conda3_packages: []
 extra_pip3_packages: []
