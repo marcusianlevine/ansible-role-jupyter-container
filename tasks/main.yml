@@ -14,10 +14,8 @@
 
 - name: Install jupyter nbextensions if specified
   block:
-    - name: Install extensions with pip
-      command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/pip install jupyter_contrib_nbextensions'
-    - name: Copy in static assets
-      command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/jupyter contrib nbextension install --user --sys-prefix'
+    - command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/pip install jupyter_contrib_nbextensions'
+    - command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/jupyter contrib nbextension install --sys-prefix'
   when: install_nbextensions is defined and install_nbextensions
 
 - name: create conda environment
