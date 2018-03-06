@@ -17,7 +17,7 @@
     - name: Install extensions with pip
       command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/pip install jupyter_contrib_nbextensions'
     - name: Copy in static assets
-      command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/jupyter contrib nbextension install --sys-prefix --symlink --debug'
+      command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/jupyter contrib nbextension install --sys-prefix --skip-running-check'
   when: install_nbextensions is defined and install_nbextensions
 
 - name: create conda environment
