@@ -46,7 +46,8 @@ $ ansible-container install marcusianlevine.jupyter-container
     * List of extra pip Python3 packages to install in addition to all listed in `pip2_packages`
 * `extra_lab_extensions`
     * List of extra Jupyter Lab extensions (npm packages) to install
-
+* `install_nbextensions`
+    * Install `jupyter_contrib_nbextensions` with conda (and associated configurator)
 
 ## Dependencies
 

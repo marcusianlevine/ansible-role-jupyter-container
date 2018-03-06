@@ -18,6 +18,8 @@ conda_config:
   auto_update_conda: false
   show_channel_urls: true
 
+install_nbextensions: yes
+
 base_lab_extensions: 
   - "@jupyterlab/hub-extension"
 
@@ -61,8 +63,6 @@ base_conda2_packages:
   - spacy
   - pymysql
   - fbprophet
-  - jupyter_contrib_nbextensions
-  - jupyter_nbextensions_configurator
 
 extra_conda2_packages: []
 conda2_packages: "{{ base_conda2_packages + extra_conda2_packages }}"

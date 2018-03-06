@@ -12,6 +12,10 @@
     content: "{{ conda_config | to_yaml }}"
     dest: "{{ conda_prefix }}/.condarc"
 
+- name: Install jupyter nbextensions if specified
+  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/conda install jupyter_contrib_nbextensions jupyter_nbextensions_configurator'
+  when: install_nbextensions is defined and install_nbextensions
+
 - name: create conda environment
   command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/conda create --yes -n {{ py2_env }} python=2.7 pip ipykernel'
     creates="{{ conda_prefix }}/envs/{{ py2_env }}"
