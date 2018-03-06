@@ -13,7 +13,7 @@
     dest: "{{ conda_prefix }}/.condarc"
 
 - name: Install jupyter nbextensions if specified
-  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/conda install jupyter_contrib_nbextensions jupyter_nbextensions_configurator'
+  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/conda install jupyter_contrib_nbextensions'
   when: install_nbextensions is defined and install_nbextensions
 
 - name: create conda environment
