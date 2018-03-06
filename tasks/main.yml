@@ -5,7 +5,7 @@
   when: vars_files is defined and vars_files
 
 - name: install jupyterhub via pip
-  shell: env -i PATH=$PATH bash -c '/opt/conda/bin/pip install --no-cache-dir --upgrade jupyterhub=={{ jupyterhub_pip_version }}'
+  shell: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/pip install --no-cache-dir --upgrade jupyterhub=={{ jupyterhub_pip_version }}'
 
 - name: add conda config
   copy:
@@ -13,7 +13,11 @@
     dest: "{{ conda_prefix }}/.condarc"
 
 - name: Install jupyter nbextensions if specified
-  command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/conda install jupyter_contrib_nbextensions'
+  block:
+    - name: Install extensions with pip
+      command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/pip install jupyter_contrib_nbextensions'
+    - name: Copy in static assets
+      command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/jupyter contrib nbextension install --user --sys-prefix'
   when: install_nbextensions is defined and install_nbextensions
 
 - name: create conda environment
