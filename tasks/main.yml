@@ -45,6 +45,7 @@
 - name: Install Jupyter Lab extensions
   command: env -i PATH=$PATH bash -c '{{ conda_prefix }}/bin/jupyter labextension install {{ item }}'
   with_items: "{{ lab_extensions }}"
+  when: install_labhubextensions is defined and install_labhubextensions
 
 - include: install_r.yml
 

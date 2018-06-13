@@ -19,6 +19,7 @@ conda_config:
   show_channel_urls: true
 
 install_nbextensions: yes
+install_labhubextensions: no
 
 base_lab_extensions: 
   - "@jupyterlab/hub-extension"
